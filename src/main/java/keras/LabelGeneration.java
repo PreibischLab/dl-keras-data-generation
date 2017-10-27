@@ -71,7 +71,7 @@ public class LabelGeneration {
 
 				for (int d = 0; d < img.numDimensions(); d++) {
 					min[d] = position[d] - patchSize/2;
-					max[d] = position[d] + patchSize/2;
+					max[d] = position[d] + patchSize/2 - 1;
 				}
 				
 				long [] offset = new long [img.numDimensions()];
@@ -104,5 +104,6 @@ public class LabelGeneration {
 		String path = "/home/milkyklim/dl-cell-counting/algorithm/data/2017-10-16-dl-data-dapi/data/";
 
 		generatePatches(path, folder, "dots.tif");
+		System.out.println("Doge!");
 	}
 }

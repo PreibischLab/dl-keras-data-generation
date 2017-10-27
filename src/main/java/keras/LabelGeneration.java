@@ -48,7 +48,7 @@ public class LabelGeneration {
 		long[] dimensions = new long[img.numDimensions()];
 		img.dimensions(dimensions);
 
-		long patchSize = 32;
+		long patchSize = 16;
 
 		for (int d = 0; d < img.numDimensions(); d++)
 			dimensions[d] += patchSize;
@@ -91,7 +91,7 @@ public class LabelGeneration {
 	}
 
 	public static void saveImage(Img<FloatType> img, String path, String name) {
-		String fullPath = path + "patches/" + name.substring(0, 3) + "patch.tif";	
+		String fullPath = path + "patches-downsampled/" + name.substring(0, 3) + "patch.tif";	
 		System.out.println(fullPath);
 		
 		new FileSaver(ImageJFunctions.wrap(img, "").duplicate()).saveAsTiffStack(fullPath);
@@ -100,7 +100,7 @@ public class LabelGeneration {
 	public static void main(String args[]) {
 
 		new ImageJ();
-		String folder = "labels";
+		String folder = "labels-downsampled";
 		String path = "/home/milkyklim/dl-cell-counting/algorithm/data/2017-10-16-dl-data-dapi/data/";
 
 		generatePatches(path, folder, "dots.tif");
